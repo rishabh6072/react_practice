@@ -69,16 +69,9 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    }
-    let persons = null;
 
+    let persons = null;
+    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -101,12 +94,7 @@ class App extends Component {
             /> */}
         </div>
       )
-
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+      btnClass = classes.Red;
     }
 
     const assignedClasses = [];
@@ -125,7 +113,7 @@ class App extends Component {
           {/* <button style={style} onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
           {/* ------------------------2 -It can be inefficient use bind syntax instead */}
           {/* <button onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button> */}
-          <button style={style} onClick={this.tooglePersonsHandler}>Toogle Persons</button>
+          <button className={btnClass} onClick={this.tooglePersonsHandler}>Toogle Persons</button>
           {persons}
         </div>
     );
