@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person'
-
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/cockpit/Cockpit';
 class App extends Component {
   state = {
     persons: [
@@ -73,28 +73,7 @@ class App extends Component {
     let persons = null;
     let btnClass = '';
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              name={person.name}
-              age={person.age}
-              click={() => this.deletePersonHandler(index)}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-            />
-          })}
-          {/* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age}><a href="#">Portfolio</a></Person>
-            <Person 
-              click={this.switchNameHandler.bind(this, 'Max')} 
-              changed={this.nameChangedHandler}
-              name={this.state.persons[2].name} 
-              age={this.state.persons[2].age} 
-            /> */}
-        </div>
-      )
-      btnClass = classes.Red;
+      persons = <Persons persons={this.state.persons} changed={this.nameChangedHandler} clicked={this.deletePersonHandler}/>;
     }
 
     const assignedClasses = [];
@@ -107,13 +86,11 @@ class App extends Component {
 
     return (
         <div className={classes.App}>
-          <h1>BIGFM 92.7</h1>
-          <p className={assignedClasses.join(' ')}>Nation wide radio station, India</p>
-          {/* ------------------------1----------------------------------------------- */}
-          {/* <button style={style} onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-          {/* ------------------------2 -It can be inefficient use bind syntax instead */}
-          {/* <button onClick={() => this.switchNameHandler('Maximilian!!') }>Switch Name</button> */}
-          <button className={btnClass} onClick={this.tooglePersonsHandler}>Toogle Persons</button>
+          <Cockpit 
+            showPersons={this.state.showPersons} 
+            persons={this.state.persons} 
+            clicked={this.tooglePersonsHandler} 
+          />
           {persons}
         </div>
     );
