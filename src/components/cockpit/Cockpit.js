@@ -20,7 +20,8 @@ const cockpit = (props) => {
   return (
     <div className={classes.Cockpit}>
       <h1>BIGFM 92.7</h1>
-      <p className={assignedClasses.join(' ')}>Nation wide radio station, India</p>
+      <h3>Nation wide radio station, India</h3>
+      <p className={assignedClasses.join(' ')}>{props.appTitle}</p>
       {/* ------------------------1----------------------------------------------- */}
       {/* <button style={style} onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
       {/* ------------------------2 -It can be inefficient use bind syntax instead */}
